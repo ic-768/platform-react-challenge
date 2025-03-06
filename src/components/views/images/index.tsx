@@ -1,3 +1,4 @@
+import { Link, Outlet } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 
@@ -39,17 +40,20 @@ export default function ImagesView() {
             transition={{ duration: 0.3, delay: index * 0.1 }}
             className="group"
           >
-            <div className="aspect-square relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-500">
-              <img
-                src={image.url}
-                alt={`Cat image ${image.id}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-            </div>
+            <Link to={`/image/${image.id}`}>
+              <div className="aspect-square relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-500">
+                <img
+                  src={image.url}
+                  alt={`Cat image ${image.id}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+            </Link>
           </motion.div>
         ))}
       </div>
+      <Outlet />
     </div>
   );
 }

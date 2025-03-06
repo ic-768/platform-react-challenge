@@ -16,7 +16,16 @@ function App() {
       element: <Layout />,
       errorElement: <div>Error element goes here</div>,
       children: [
-        { path: "/", element: <ImagesView /> },
+        {
+          path: "/",
+          element: <ImagesView />,
+          children: [
+            {
+              path: "/image/:imageId",
+              element: <div>Modal goes here</div>,
+            },
+          ],
+        },
         { path: "/breeds", element: <BreedsView /> },
         { path: "/favorites", element: <FavoritesView /> },
       ],

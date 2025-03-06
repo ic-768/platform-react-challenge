@@ -31,7 +31,7 @@ export default function ImagesView() {
   return (
     <div className="flex flex-col gap-8">
       <RefreshButton refetch={refetch} isFetching={isFetching} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data.map((image, index) => (
           <motion.div
             key={image.id}
@@ -41,11 +41,11 @@ export default function ImagesView() {
             className="group"
           >
             <Link to={`/image/${image.id}`}>
-              <div className="aspect-square relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-500">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md transition-shadow duration-500 hover:shadow-xl">
                 <img
                   src={image.url}
                   alt={`Cat image ${image.id}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
               </div>

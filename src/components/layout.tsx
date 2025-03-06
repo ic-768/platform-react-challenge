@@ -2,8 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <nav className="bg-gray-800 text-white p-4">
+    <div className="flex min-h-screen flex-col">
+      <nav className="bg-gray-800 p-4 text-white">
         <ul className="flex space-x-4">
           <li>
             <Link to="/" className="hover:underline">

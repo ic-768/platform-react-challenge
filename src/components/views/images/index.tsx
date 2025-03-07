@@ -18,6 +18,7 @@ export default function ImagesView() {
   } = useQuery({
     queryKey: ["images"],
     queryFn: getImages,
+    staleTime: Infinity,
   });
 
   if (isLoading) {
@@ -45,7 +46,7 @@ export default function ImagesView() {
                 <img
                   src={image.url}
                   alt={`Cat image ${image.id}`}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
               </div>

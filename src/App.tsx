@@ -5,6 +5,7 @@ import Layout from "./components/layout";
 import BreedsView from "./components/views/breeds";
 import FavoritesView from "./components/views/favorites";
 import ImagesView from "./components/views/images";
+import ImageModal from "./components/views/images/image-modal";
 
 function App() {
   const queryClient = new QueryClient();
@@ -22,7 +23,7 @@ function App() {
           children: [
             {
               path: "/image/:imageId",
-              element: <div>Modal goes here</div>,
+              element: <ImageModal />,
             },
           ],
         },

@@ -1,6 +1,6 @@
 import { Breed } from "@/types/Breed";
 
-type GetImageResult = {
+export type GetImageResult = {
   id: string;
   url: string;
   width: number;

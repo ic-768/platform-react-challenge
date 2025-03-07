@@ -138,3 +138,22 @@
     @apply bg-background text-foreground flex flex-col;
   }
 }
+
+h1 {
+  @apply text-4xl text-black;
+}
+h2 {
+  @apply text-3xl text-black;
+}
+h3 {
+  @apply text-2xl text-black;
+}
+h4 {
+  @apply text-xl text-black;
+}
+h5 {
+  @apply text-lg text-black;
+}
+h6 {
+  @apply text-base text-black;
+}

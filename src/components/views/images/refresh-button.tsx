@@ -16,9 +16,8 @@ export default function RefreshButton({
         {isFetching ? (
           <Loader2 className="size-4 animate-spin" />
         ) : (
-          <RefreshCw className="size-4 transition-transform duration-500 group-hover:rotate-180" />
+          <RefreshCw className="size-4 duration-500 group-hover:rotate-180" />
         )}
-
         {isFetching ? "Loading..." : "New Cats"}
       </Button>
     </div>

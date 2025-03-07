@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
@@ -23,9 +23,17 @@ const Modal = ({
   className = "",
 }: ModalProps) => {
   const classes = twJoin(
-    "relative flex min-h-[80%] max-h-[90%] min-w-[18rem] flex-col overflow-y-auto rounded-xl bg-white pt-0 text-black shadow-xl",
+    "relative max-h-[80vh] max-w-4/5 flex flex-col overflow-y-auto rounded-xl bg-white pt-0 text-black shadow-xl",
     className,
   );
+
+  // Prevent body scrolling when modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return createPortal(
     <BackDrop onMouseDown={onClose}>
@@ -37,10 +45,13 @@ const Modal = ({
         exit="exit"
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-40 flex w-full bg-white pt-6 backdrop-blur-xs dark:bg-zinc-950">
+        <div className="sticky top-0 z-40 flex w-full bg-white px-4 pt-6 backdrop-blur-xs dark:bg-zinc-950">
           <h5 className="px-6 font-semibold capitalize"> {title} </h5>
-          <button onClick={onClose}>
-            <X className="size-5" />
+          <button
+            className="ml-auto cursor-pointer duration-200 hover:scale-120"
+            onClick={onClose}
+          >
+            <X />
           </button>
         </div>
         <div className="flex grow flex-col content-center items-center p-6">

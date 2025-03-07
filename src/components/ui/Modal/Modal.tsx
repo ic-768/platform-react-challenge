@@ -23,7 +23,7 @@ const Modal = ({
   className = "",
 }: ModalProps) => {
   const classes = twJoin(
-    "relative max-h-[80vh] max-w-4/5 flex flex-col overflow-y-auto rounded-xl bg-white pt-0 text-black shadow-xl",
+    "relative max-h-[80vh] max-w-4/5 flex flex-col overflow-y-auto rounded-xl bg-white pt-0 text-black shadow-xl min-h-96 min-w-96 items-center",
     className,
   );
 
@@ -54,7 +54,7 @@ const Modal = ({
             <X />
           </button>
         </div>
-        <div className="flex grow flex-col content-center items-center p-6">
+        <div className="flex grow flex-col content-center items-center justify-center p-6">
           {children}
         </div>
       </motion.div>

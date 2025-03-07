@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { Heart, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import { getImage } from "@/api/get-image";
+import FavoriteButton from "@/components/ui/favorite-button";
 import Modal from "@/components/ui/Modal";
 import { useFavorites } from "@/context/favorites/use-favorites";
 
@@ -16,38 +17,47 @@ interface BreedModalProps {
 export default function BreedModal({ imageId }: BreedModalProps) {
   const { data: imageData, isFetching } = useQuery({
     queryKey: ["image", imageId],
-    queryFn: () => getImage(imageId!),
+    queryFn: () => getImage(imageId),
     staleTime: Infinity,
   });
 
   const navigate = useNavigate();
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 
-  const onClose = () => {
+  function onClose() {
     navigate("/images");
-  };
-
-  let content = <Loader2 />;
-
-  if (!isFetching && imageData) {
-    if (imageData.breeds?.[0]) {
-      content = (
-        <HasBreedContent imageUrl={imageData.url} breed={imageData.breeds[0]} />
-      );
-    } else {
-      content = <NoBreedContent imageUrl={imageData.url} />;
-    }
   }
 
-  const { addToFavorites, isFavorite } = useFavorites();
-  const isFavorited = imageData?.id !== undefined && isFavorite(imageData.id);
-  const iconProps = isFavorited ? { fill: "red", stroke: "red" } : undefined;
+  if (isFetching || !imageData) {
+    return (
+      <Modal onClose={onClose} title="Loading...">
+        <Loader2 />
+      </Modal>
+    );
+  }
+
+  const hasBreed = imageData.breeds && imageData.breeds.length > 0;
+  const isFavorited = isFavorite(imageData.id);
+
+  function handleFavoriteClick() {
+    if (!imageData) return;
+
+    if (isFavorited) {
+      removeFromFavorites(imageData.id);
+    } else {
+      addToFavorites(imageData.id);
+    }
+  }
+  const content = hasBreed ? (
+    <HasBreedContent imageUrl={imageData.url} breed={imageData.breeds![0]} />
+  ) : (
+    <NoBreedContent imageUrl={imageData.url} />
+  );
 
   return (
-    <Modal onClose={onClose} title={imageData?.id}>
+    <Modal onClose={onClose} title={imageData.id}>
       {content}
-      <button onClick={() => imageData && addToFavorites(imageData.id)}>
-        <Heart size={24} {...iconProps} />
-      </button>
+      <FavoriteButton onClick={handleFavoriteClick} isFavorited={isFavorited} />
     </Modal>
   );
 }

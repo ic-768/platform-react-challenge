@@ -39,7 +39,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
 
   const removeFromFavorites = (string: string) => {
     setFavorites((prevFavorites) =>
-      prevFavorites ? prevFavorites.filter((s) => s === string) : [],
+      prevFavorites ? prevFavorites.filter((s) => s !== string) : [],
     );
   };
 

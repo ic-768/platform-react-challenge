@@ -24,9 +24,9 @@ export default function BreedModal({ imageId }: BreedModalProps) {
   const navigate = useNavigate();
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
 
-  function onClose() {
+  const onClose = () => {
     navigate("/images");
-  }
+  };
 
   if (isFetching || !imageData) {
     return (

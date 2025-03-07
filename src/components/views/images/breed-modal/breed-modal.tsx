@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
+import { Heart, Loader2 } from "lucide-react";
 
 import { getImage } from "@/api/get-image";
 import Modal from "@/components/ui/Modal";
+import { useFavorites } from "@/context/favorites/use-favorites";
 
 import HasBreedContent from "./has-breed-content";
 import NoBreedContent from "./no-breed-content";
@@ -36,9 +37,17 @@ export default function BreedModal({ imageId }: BreedModalProps) {
       content = <NoBreedContent imageUrl={imageData.url} />;
     }
   }
+
+  const { addToFavorites, isFavorite } = useFavorites();
+  const isFavorited = imageData?.id !== undefined && isFavorite(imageData.id);
+  const iconProps = isFavorited ? { fill: "red", stroke: "red" } : undefined;
+
   return (
     <Modal onClose={onClose} title={imageData?.id}>
       {content}
+      <button onClick={() => imageData && addToFavorites(imageData.id)}>
+        <Heart size={24} {...iconProps} />
+      </button>
     </Modal>
   );
 }

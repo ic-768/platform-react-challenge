@@ -9,6 +9,7 @@ import Layout from "./components/layout";
 import BreedsView from "./components/views/breeds";
 import FavoritesView from "./components/views/favorites";
 import ImagesView from "./components/views/images";
+import { FavoritesProvider } from "./context/favorites/favorites";
 
 function App() {
   const queryClient = new QueryClient();
@@ -39,7 +40,9 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <FavoritesProvider>
+        <RouterProvider router={router} />
+      </FavoritesProvider>
     </QueryClientProvider>
   );
 }

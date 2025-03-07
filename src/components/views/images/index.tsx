@@ -1,10 +1,11 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import { getImages } from "@/api/get-images";
 
 import Error from "./error";
+import ImageModal from "./image-modal";
 import Loading from "./loading";
 import RefreshButton from "./refresh-button";
 
@@ -20,6 +21,8 @@ export default function ImagesView() {
     queryFn: getImages,
     staleTime: Infinity,
   });
+
+  const { imageId } = useParams();
 
   if (isLoading) {
     return <Loading />;
@@ -41,7 +44,7 @@ export default function ImagesView() {
             transition={{ duration: 0.3, delay: index * 0.1 }}
             className="group"
           >
-            <Link to={`/image/${image.id}`}>
+            <Link to={`/images/${image.id}`}>
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md transition-shadow duration-500 hover:shadow-xl">
                 <img
                   src={image.url}
@@ -54,7 +57,9 @@ export default function ImagesView() {
           </motion.div>
         ))}
       </div>
-      <Outlet />
+      <AnimatePresence>
+        {imageId && <ImageModal imageId={imageId} />}
+      </AnimatePresence>
     </div>
   );
 }

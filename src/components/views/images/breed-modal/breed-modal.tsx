@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 
 import { getImage } from "@/api/get-image";
 import Modal from "@/components/ui/Modal";
@@ -12,7 +13,7 @@ interface BreedModalProps {
 }
 
 export default function BreedModal({ imageId }: BreedModalProps) {
-  const { data: imageData } = useQuery({
+  const { data: imageData, isFetching } = useQuery({
     queryKey: ["image", imageId],
     queryFn: () => getImage(imageId!),
     staleTime: Infinity,
@@ -24,18 +25,20 @@ export default function BreedModal({ imageId }: BreedModalProps) {
     navigate("/images");
   };
 
-  if (!imageData) return;
+  let content = <Loader2 />;
 
+  if (!isFetching && imageData) {
+    if (imageData.breeds?.[0]) {
+      content = (
+        <HasBreedContent imageUrl={imageData.url} breed={imageData.breeds[0]} />
+      );
+    } else {
+      content = <NoBreedContent imageUrl={imageData.url} />;
+    }
+  }
   return (
     <Modal onClose={onClose} title={imageData?.id}>
-      {imageData.breeds?.[0] ? (
-        <HasBreedContent
-          imageUrl={imageData.url}
-          breed={imageData.breeds?.[0]}
-        />
-      ) : (
-        <NoBreedContent imageUrl={imageData.url} />
-      )}
+      {content}
     </Modal>
   );
 }

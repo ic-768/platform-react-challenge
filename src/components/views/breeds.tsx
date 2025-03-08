@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { Loader2, PawPrint } from "lucide-react";
 
@@ -56,7 +57,11 @@ export default function BreedsView() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ul className="flex flex-col gap-3">
+            <motion.ul
+              initial={{ opacity: 0, y: 0 }}
+              animate={{ opacity: 1, y: 20 }}
+              className="flex flex-col gap-3"
+            >
               {breeds?.map((breed, index) => (
                 <li key={index}>
                   <Link
@@ -73,7 +78,7 @@ export default function BreedsView() {
                   </Link>
                 </li>
               ))}
-            </ul>
+            </motion.ul>
           </CardContent>
         </Card>
       </div>

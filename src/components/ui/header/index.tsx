@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Grid, PawPrint, PawPrintIcon } from "lucide-react";
 
-import MotionLi from "../motion/motion-li";
 import FavoritesIndicator from "./favorites-indicator";
 import HamburgerMenu from "./hamburger-menu";
 import MotionHeader from "./motion-header";
@@ -38,7 +38,7 @@ export default function Header() {
         <nav className="relative">
           <ul className="hidden gap-10 sm:flex">
             {links.map(({ element, href }) => (
-              <MotionLi
+              <motion.li
                 className="flex items-center"
                 key={href}
                 whileHover={{ scale: 1.08 }}
@@ -46,7 +46,7 @@ export default function Header() {
                 <Link className="text-gray-600" to={href}>
                   {element}
                 </Link>
-              </MotionLi>
+              </motion.li>
             ))}
           </ul>
           <HamburgerMenu links={links} />

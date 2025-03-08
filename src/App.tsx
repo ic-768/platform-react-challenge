@@ -26,7 +26,7 @@ function App() {
           element: <ImagesView />,
         },
         {
-          path: "/breeds",
+          path: "/breeds/:breedId?",
           element: <BreedsView />,
         },
         { path: "/favorites/:imageId?", element: <FavoritesView /> },

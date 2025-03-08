@@ -7,6 +7,7 @@ import { getImages } from "@/api/get-images";
 import ImageModal from "@/components/image-modal";
 import RefreshButton from "@/components/ui/refresh-button";
 
+import ErrorBanner from "../ui/error-banner";
 import Gallery from "../ui/gallery/gallery";
 import GalleryItem from "../ui/gallery/gallery-item";
 
@@ -36,11 +37,7 @@ export default function ImagesView() {
 
   if (isError) {
     return (
-      <div className="rounded-lg bg-red-50 p-8 text-center">
-        <p className="text-red-500">
-          Failed to load cat images. Please try again.
-        </p>
-      </div>
+      <ErrorBanner>Failed to load cat images. Please try again.</ErrorBanner>
     );
   }
 

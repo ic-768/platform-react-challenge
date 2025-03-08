@@ -24,7 +24,6 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   // Load favorites from localStorage after mounting
   useEffect(() => {
     const savedFavorites = localStorage.getItem("favorites");
-    console.log(savedFavorites);
     setFavorites(savedFavorites ? JSON.parse(savedFavorites) : []);
   }, []);
 

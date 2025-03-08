@@ -17,19 +17,21 @@ export default function FavoritesView() {
   };
 
   return (
-    <Gallery>
+    <>
       <title>Favorites</title>
-      {favorites.map((image, index) => (
-        <GalleryItem
-          link={`/favorites/${image.id}`}
-          key={image.id}
-          image={image}
-          index={index}
-        />
-      ))}
-      <AnimatePresence>
-        {imageId && <ImageModal onClose={onClose} imageId={imageId} />}
-      </AnimatePresence>
-    </Gallery>
+      <Gallery>
+        {favorites.map((image, index) => (
+          <GalleryItem
+            link={`/favorites/${image.id}`}
+            key={image.id}
+            image={image}
+            index={index}
+          />
+        ))}
+        <AnimatePresence>
+          {imageId && <ImageModal onClose={onClose} imageId={imageId} />}
+        </AnimatePresence>
+      </Gallery>
+    </>
   );
 }

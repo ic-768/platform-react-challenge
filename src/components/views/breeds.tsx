@@ -5,6 +5,7 @@ import { Loader2, PawPrint } from "lucide-react";
 
 import { getBreeds } from "@/api/get-breeds";
 
+import BreedModal from "../breed-modal";
 import Badge from "../ui/badge";
 import {
   Card,
@@ -77,7 +78,7 @@ export default function BreedsView() {
         </Card>
       </div>
       <AnimatePresence>
-        {breedId && <span>list of breed images here</span>}
+        {breedId && <BreedModal breedId={breedId} />}
       </AnimatePresence>
     </>
   );

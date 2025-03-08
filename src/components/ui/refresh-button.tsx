@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { Loader2, RefreshCw } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -5,10 +6,12 @@ import { Button } from "@/components/ui/button";
 interface RefreshButtonArgs {
   refetch: () => void;
   isFetching: boolean;
+  content: ReactNode;
 }
 export default function RefreshButton({
   refetch,
   isFetching,
+  content,
 }: RefreshButtonArgs) {
   return (
     <div className="text-center">
@@ -18,7 +21,7 @@ export default function RefreshButton({
         ) : (
           <RefreshCw className="size-4 duration-500 group-hover:rotate-180" />
         )}
-        {isFetching ? "Loading..." : "New Cats"}
+        {isFetching ? "Loading..." : content}
       </Button>
     </div>
   );

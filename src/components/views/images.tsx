@@ -1,13 +1,11 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
+import { Loader2 } from "lucide-react";
 
 import { getImages } from "@/api/get-images";
 import ImageModal from "@/components/image-modal";
-
-import Error from "./error";
-import Loading from "./loading";
-import RefreshButton from "./refresh-button";
+import RefreshButton from "@/components/ui/refresh-button";
 
 export default function ImagesView() {
   const {
@@ -26,11 +24,21 @@ export default function ImagesView() {
   const navigate = useNavigate();
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <Loader2 className="text-primary size-12 animate-spin" />
+      </div>
+    );
   }
 
   if (isError) {
-    return <Error />;
+    return (
+      <div className="rounded-lg bg-red-50 p-8 text-center">
+        <p className="text-red-500">
+          Failed to load cat images. Please try again.
+        </p>
+      </div>
+    );
   }
 
   const onClose = () => {
@@ -39,7 +47,11 @@ export default function ImagesView() {
 
   return (
     <div className="flex flex-col gap-8">
-      <RefreshButton refetch={refetch} isFetching={isFetching} />
+      <RefreshButton
+        content="New cats"
+        refetch={refetch}
+        isFetching={isFetching}
+      />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {data.map((image, index) => (
           <motion.div

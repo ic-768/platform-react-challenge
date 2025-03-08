@@ -15,13 +15,25 @@ interface ImageModalProps {
 }
 
 export default function ImageModal({ imageId, onClose }: ImageModalProps) {
-  const { data: imageData, isFetching } = useQuery({
+  const {
+    data: imageData,
+    isFetching,
+    isError,
+  } = useQuery({
     queryKey: ["image", imageId],
     queryFn: () => getImage(imageId),
     staleTime: Infinity,
   });
 
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+
+  if (isError) {
+    return (
+      <Modal onClose={onClose} title="Error">
+        <p>Something went wrong ¯\_(ツ)_/¯</p>
+      </Modal>
+    );
+  }
 
   if (isFetching || !imageData) {
     return (

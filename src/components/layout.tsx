@@ -1,28 +1,12 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+
+import Header from "./ui/header";
 
 export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
-      <nav className="bg-gray-800 p-4 text-white">
-        <ul className="flex space-x-4">
-          <li>
-            <Link to="/" className="hover:underline">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/breeds" className="hover:underline">
-              Breeds
-            </Link>
-          </li>
-          <li>
-            <Link to="/favorites" className="hover:underline">
-              Favorites
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <main className="flex-1 p-4">
+      <Header />
+      <main className="flex-1 p-4 pt-24">
         <Outlet />
       </main>
     </div>

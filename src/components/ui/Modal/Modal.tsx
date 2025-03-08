@@ -23,7 +23,7 @@ const Modal = ({
   className = "",
 }: ModalProps) => {
   const classes = twJoin(
-    "relative max-h-[80vh] max-w-4/5 flex flex-col overflow-y-auto rounded-xl bg-white pt-0 text-black shadow-xl min-h-96 min-w-96 items-center",
+    "relative max-h-[80vh] max-w-4/5 flex flex-col overflow-y-auto rounded-xl bg-white pt-0 text-black shadow-xl min-h-96 min-w-3/5 items-center",
     className,
   );
 
@@ -38,6 +38,7 @@ const Modal = ({
   return createPortal(
     <BackDrop onMouseDown={onClose}>
       <motion.div
+        layout
         className={classes}
         variants={dropInVariant}
         initial="hidden"

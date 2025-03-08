@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Grid, PawPrintIcon } from "lucide-react";
+import { Grid, PawPrint, PawPrintIcon } from "lucide-react";
 
 import MotionLi from "../motion/motion-li";
 import FavoritesIndicator from "./favorites-indicator";
@@ -12,6 +12,11 @@ export default function Header() {
       element: <Grid />,
       href: "/",
       label: "Home",
+    },
+    {
+      element: <PawPrint />,
+      href: "/breeds",
+      label: "Breeds",
     },
     {
       element: <FavoritesIndicator />,

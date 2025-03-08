@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { Breed } from "@/types/Breed";
 
 import BasicInfo from "./basic-info";
@@ -14,7 +16,9 @@ const HasBreedContent = ({
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       <div className="flex flex-col items-center justify-start">
         <div className="h-64 overflow-hidden rounded-lg md:h-96">
-          <img src={imageUrl} alt={breed.name} />
+          <Link to={`/breeds/${breed.id}`}>
+            <img src={imageUrl} alt={breed.name} />
+          </Link>
         </div>
         <BasicInfo breed={breed} />
       </div>

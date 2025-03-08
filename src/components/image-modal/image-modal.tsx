@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
@@ -12,21 +11,17 @@ import NoBreedContent from "./no-breed-content";
 
 interface ImageModalProps {
   imageId: string;
+  onClose: () => void;
 }
 
-export default function ImageModal({ imageId }: ImageModalProps) {
+export default function ImageModal({ imageId, onClose }: ImageModalProps) {
   const { data: imageData, isFetching } = useQuery({
     queryKey: ["image", imageId],
     queryFn: () => getImage(imageId),
     staleTime: Infinity,
   });
 
-  const navigate = useNavigate();
   const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
-
-  const onClose = () => {
-    navigate("/images");
-  };
 
   if (isFetching || !imageData) {
     return (
@@ -37,15 +32,15 @@ export default function ImageModal({ imageId }: ImageModalProps) {
   }
 
   const hasBreed = imageData.breeds && imageData.breeds.length > 0;
-  const isFavorited = isFavorite(imageData.id);
+  const isFavorited = isFavorite(imageData);
 
   function handleFavoriteClick() {
     if (!imageData) return;
 
     if (isFavorited) {
-      removeFromFavorites(imageData.id);
+      removeFromFavorites(imageData);
     } else {
-      addToFavorites(imageData.id);
+      addToFavorites(imageData);
     }
   }
   const content = hasBreed ? (

@@ -29,7 +29,7 @@ function App() {
           path: "/breeds",
           element: <BreedsView />,
         },
-        { path: "/favorites", element: <FavoritesView /> },
+        { path: "/favorites/:imageId?", element: <FavoritesView /> },
         {
           path: "",
           element: <Navigate to="/images" />,

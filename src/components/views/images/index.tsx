@@ -1,11 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { getImages } from "@/api/get-images";
+import ImageModal from "@/components/image-modal";
 
 import Error from "./error";
-import ImageModal from "./image-modal";
 import Loading from "./loading";
 import RefreshButton from "./refresh-button";
 
@@ -23,6 +23,7 @@ export default function ImagesView() {
   });
 
   const { imageId } = useParams();
+  const navigate = useNavigate();
 
   if (isLoading) {
     return <Loading />;
@@ -31,6 +32,10 @@ export default function ImagesView() {
   if (isError) {
     return <Error />;
   }
+
+  const onClose = () => {
+    navigate("/images");
+  };
 
   return (
     <div className="flex flex-col gap-8">
@@ -58,7 +63,7 @@ export default function ImagesView() {
         ))}
       </div>
       <AnimatePresence>
-        {imageId && <ImageModal imageId={imageId} />}
+        {imageId && <ImageModal onClose={onClose} imageId={imageId} />}
       </AnimatePresence>
     </div>
   );

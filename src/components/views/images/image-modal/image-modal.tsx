@@ -10,11 +10,11 @@ import { useFavorites } from "@/context/favorites/use-favorites";
 import HasBreedContent from "./has-breed-content";
 import NoBreedContent from "./no-breed-content";
 
-interface BreedModalProps {
+interface ImageModalProps {
   imageId: string;
 }
 
-export default function BreedModal({ imageId }: BreedModalProps) {
+export default function ImageModal({ imageId }: ImageModalProps) {
   const { data: imageData, isFetching } = useQuery({
     queryKey: ["image", imageId],
     queryFn: () => getImage(imageId),

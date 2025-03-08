@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { getImages } from "@/api/get-images";
 
-import BreedModal from "./breed-modal/breed-modal";
 import Error from "./error";
+import ImageModal from "./image-modal";
 import Loading from "./loading";
 import RefreshButton from "./refresh-button";
 
@@ -58,7 +58,7 @@ export default function ImagesView() {
         ))}
       </div>
       <AnimatePresence>
-        {imageId && <BreedModal imageId={imageId} />}
+        {imageId && <ImageModal imageId={imageId} />}
       </AnimatePresence>
     </div>
   );

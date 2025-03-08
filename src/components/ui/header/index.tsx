@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Grid, Heart, PawPrintIcon } from "lucide-react";
+import { Grid, PawPrintIcon } from "lucide-react";
 
 import MotionLi from "../motion/motion-li";
+import FavoritesIndicator from "./favorites-indicator";
 import HamburgerMenu from "./hamburger-menu";
 import MotionHeader from "./motion-header";
 
@@ -13,7 +14,7 @@ export default function Header() {
       label: "Home",
     },
     {
-      element: <Heart />,
+      element: <FavoritesIndicator />,
       href: "/favorites",
       label: "Favorites",
     },

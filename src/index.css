@@ -11,7 +11,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -50,6 +49,8 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  @apply bg-blue-50;
 }
 
 .autofill {
@@ -135,7 +136,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground flex flex-col;
+    @apply text-foreground flex flex-col;
   }
 }
 

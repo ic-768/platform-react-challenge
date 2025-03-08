@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Grid, PawPrint, PawPrintIcon } from "lucide-react";
+import { Cat, Grid, PawPrint } from "lucide-react";
 
 import FavoritesIndicator from "./favorites-indicator";
 import HamburgerMenu from "./hamburger-menu";
@@ -32,7 +32,7 @@ export default function Header() {
           to="/"
           className="flex items-center gap-2 text-xl font-bold sm:text-2xl"
         >
-          <PawPrintIcon className="size-8" />
+          <Cat className="size-8" />
           <span>Cat Lover</span>
         </Link>
         <nav className="relative">

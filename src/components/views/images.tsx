@@ -1,11 +1,14 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
 import { getImages } from "@/api/get-images";
 import ImageModal from "@/components/image-modal";
 import RefreshButton from "@/components/ui/refresh-button";
+
+import Gallery from "../ui/gallery/gallery";
+import GalleryItem from "../ui/gallery/gallery-item";
 
 export default function ImagesView() {
   const {
@@ -52,28 +55,16 @@ export default function ImagesView() {
         refetch={refetch}
         isFetching={isFetching}
       />
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <Gallery>
         {data.map((image, index) => (
-          <motion.div
+          <GalleryItem
+            link={`/images/${image.id}`}
             key={image.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="group"
-          >
-            <Link to={`/images/${image.id}`}>
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md transition-shadow duration-500 hover:shadow-xl">
-                <img
-                  src={image.url}
-                  alt={`Cat image ${image.id}`}
-                  className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-              </div>
-            </Link>
-          </motion.div>
+            image={image}
+            index={index}
+          />
         ))}
-      </div>
+      </Gallery>
       <AnimatePresence>
         {imageId && <ImageModal onClose={onClose} imageId={imageId} />}
       </AnimatePresence>

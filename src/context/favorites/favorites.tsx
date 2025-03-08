@@ -1,21 +1,21 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
-import { GetImageResult } from "@/api/get-image";
+import { Image } from "@/types/Image";
 
 import { FavoritesContext } from "./provider";
 
 export interface FavoritesContextType {
-  favorites: GetImageResult[];
-  addToFavorites: (image: GetImageResult) => void;
-  removeFromFavorites: (image: GetImageResult) => void;
-  isFavorite: (image: GetImageResult) => boolean;
+  favorites: Image[];
+  addToFavorites: (image: Image) => void;
+  removeFromFavorites: (image: Image) => void;
+  isFavorite: (image: Image) => boolean;
 }
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   const queryClient = useQueryClient();
 
-  const [favorites, setFavorites] = useState<GetImageResult[]>(
+  const [favorites, setFavorites] = useState<Image[]>(
     localStorage.getItem("favorites")
       ? JSON.parse(localStorage.getItem("favorites") as string)
       : [],
@@ -33,7 +33,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  const addToFavorites = (image: GetImageResult) => {
+  const addToFavorites = (image: Image) => {
     if (!favorites || favorites.find((s) => s.id === image.id)) {
       return; // Item already in favorites
     }
@@ -43,14 +43,14 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const removeFromFavorites = (image: GetImageResult) => {
+  const removeFromFavorites = (image: Image) => {
     queryClient.invalidateQueries({ queryKey: ["favorites"] });
     setFavorites((prevFavorites) =>
       prevFavorites ? prevFavorites.filter((s) => s.id !== image.id) : [],
     );
   };
 
-  const isFavorite = (image: GetImageResult) => {
+  const isFavorite = (image: Image) => {
     return favorites?.some((i) => i.id === image.id) || false;
   };
 

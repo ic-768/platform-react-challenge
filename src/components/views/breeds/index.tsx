@@ -33,11 +33,17 @@ export default function BreedsView() {
     return <ErrorBanner>Failed to load breeds. Please try again.</ErrorBanner>;
   }
 
+  const listContent = filteredBreeds.length ? (
+    <BreedList filter={filter} breeds={filteredBreeds} />
+  ) : (
+    <p className="text-muted-foreground text-center">No breeds found</p>
+  );
+
   return (
     <>
       <title>Breeds</title>
       <div className="flex flex-col items-center">
-        <Card className="max-w-3xl min-w-2xl">
+        <Card className="max-w-3xl min-w-2/3 xl:min-w-1/3">
           <CardHeader className="text-center">
             <div className="flex items-center justify-center gap-2">
               <PawPrint className="size-6" />
@@ -46,9 +52,7 @@ export default function BreedsView() {
             <CardDescription>Cat breeds from around the world!</CardDescription>
             <BreedFilter filter={filter} setFilter={setFilter} />
           </CardHeader>
-          <CardContent>
-            <BreedList filter={filter} breeds={filteredBreeds} />
-          </CardContent>
+          <CardContent>{listContent}</CardContent>
         </Card>
       </div>
       <AnimatePresence>

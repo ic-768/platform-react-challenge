@@ -12,7 +12,7 @@ export default function FavoritesIndicator() {
   if (favorites === null) return;
 
   return (
-    <div className="relative flex size-auto size-full items-center justify-center">
+    <div className="relative flex size-auto items-center justify-center">
       <NumberBubble number={numToShow} />
       <Heart size={24} />
     </div>

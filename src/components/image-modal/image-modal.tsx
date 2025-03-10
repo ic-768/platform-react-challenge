@@ -67,7 +67,7 @@ export default function ImageModal({ imageId, onClose }: ImageModalProps) {
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.1 }}
+        transition={{ duration: 0.3 }}
       >
         {content}
       </motion.div>

@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <MotionHeader>
-      <div className="flex h-full items-center justify-between text-blue-500">
+      <div className="font-galada flex h-full items-center justify-between text-blue-500">
         <Link
           to="/"
           className="flex items-center gap-2 text-xl font-bold sm:text-2xl"

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Galada&display=swap");
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";
@@ -157,4 +158,8 @@ h5 {
 }
 h6 {
   @apply text-base text-black;
+}
+
+@theme {
+  --font-galada: "Galada", cursive;
 }

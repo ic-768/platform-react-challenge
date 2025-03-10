@@ -1,4 +1,7 @@
+import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+
+import { favoriteVariants } from "@/lib/animations";
 
 interface FavoriteButtonProps {
   onClick: () => void;
@@ -15,7 +18,13 @@ export default function FavoriteButton({
       className="sticky bottom-16 flex size-14 cursor-pointer items-center justify-center self-end rounded-full bg-red-100 outline outline-red-500/60 transition-colors hover:bg-red-200"
       onClick={onClick}
     >
-      <Heart size={32} {...iconProps} />
+      <motion.div
+        initial={false}
+        animate={isFavorited ? "favorited" : undefined}
+        variants={favoriteVariants}
+      >
+        <Heart size={32} {...iconProps} />
+      </motion.div>
     </button>
   );
 }

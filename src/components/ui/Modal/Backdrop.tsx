@@ -26,7 +26,6 @@ const BackDrop = ({
     <motion.div
       className="fixed z-500 flex h-screen w-screen items-center justify-center backdrop-blur-xs backdrop-brightness-50 dark:backdrop-brightness-75"
       variants={fadeIn}
-      initial="hidden"
       animate="visible"
       exit="exit"
       onMouseDown={onMouseDown}

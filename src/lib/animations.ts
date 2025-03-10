@@ -17,3 +17,12 @@ export const dropInVariant = {
     opacity: 0,
   },
 };
+
+export const favoriteVariants = {
+  favorited: {
+    scale: [1, 1.5, 1],
+    transition: {
+      duration: 0.5,
+    },
+  },
+};

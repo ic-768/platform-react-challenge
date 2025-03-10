@@ -9,6 +9,7 @@ import Layout from "./components/layout";
 import BreedsView from "./components/views/breeds";
 import FavoritesView from "./components/views/favorites";
 import ImagesView from "./components/views/images";
+import PettingTrainer from "./components/views/petting-trainer";
 import { FavoritesProvider } from "./context/favorites/favorites";
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
           element: <BreedsView />,
         },
         { path: "/favorites/:imageId?", element: <FavoritesView /> },
+        {
+          path: "petting-trainer",
+          element: <PettingTrainer />,
+        },
         {
           path: "",
           element: <Navigate to="/images" />,

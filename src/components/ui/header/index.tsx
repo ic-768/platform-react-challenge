@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Cat, Grid, PawPrint } from "lucide-react";
+import { Cat, Gift, Grid, PawPrint } from "lucide-react";
 
 import FavoritesIndicator from "./favorites-indicator";
 import HamburgerMenu from "./hamburger-menu";
@@ -22,6 +22,11 @@ export default function Header() {
       element: <FavoritesIndicator />,
       href: "/favorites",
       label: "Favorites",
+    },
+    {
+      element: <Gift />,
+      href: "/petting-trainer",
+      label: "Press to find out",
     },
   ];
 

@@ -3,10 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
 import { getBreedImages } from "@/api/get-breed-images";
-
-import Gallery from "./ui/gallery/gallery";
-import GalleryItem from "./ui/gallery/gallery-item";
-import Modal from "./ui/Modal";
+import Gallery from "@/components/ui/gallery/gallery";
+import GalleryItem from "@/components/ui/gallery/gallery-item";
+import Modal from "@/components/ui/Modal";
 
 interface BreedModalProps {
   breedId: string;

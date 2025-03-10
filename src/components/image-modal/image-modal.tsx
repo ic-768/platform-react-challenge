@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
 import { getImage } from "@/api/get-image";
@@ -63,7 +64,13 @@ export default function ImageModal({ imageId, onClose }: ImageModalProps) {
 
   return (
     <Modal onClose={onClose} title={imageData.id}>
-      {content}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.1 }}
+      >
+        {content}
+      </motion.div>
       <FavoriteButton onClick={handleFavoriteClick} isFavorited={isFavorited} />
     </Modal>
   );

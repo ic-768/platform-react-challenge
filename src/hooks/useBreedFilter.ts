@@ -3,8 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 
 import { getBreeds } from "@/api/get-breeds";
 
+import { useDebounce } from "./useDebounce";
+
 export const useBreedFilter = () => {
   const [filter, setFilter] = useState("");
+  const debouncedFilter = useDebounce(filter, 300);
 
   const {
     data: breeds = [],
@@ -17,8 +20,14 @@ export const useBreedFilter = () => {
   });
 
   const filteredBreeds = breeds.filter((b) =>
-    b.name.toLowerCase().includes(filter.toLowerCase()),
+    b.name.toLowerCase().includes(debouncedFilter.toLowerCase()),
   );
 
-  return { isFetching, isError, filter, setFilter, filteredBreeds };
+  return {
+    isFetching,
+    isError,
+    filter,
+    setFilter,
+    filteredBreeds,
+  };
 };

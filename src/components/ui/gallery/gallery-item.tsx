@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -10,11 +11,13 @@ interface GalleryItemProps {
 }
 
 export default function GalleryItem({ image, index, link }: GalleryItemProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <motion.div
       key={image.id}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={isLoaded ? { opacity: 1 } : undefined}
       transition={{ duration: 0.3, delay: index * 0.1 }}
       layout
       exit={{ opacity: 0 }}
@@ -27,6 +30,7 @@ export default function GalleryItem({ image, index, link }: GalleryItemProps) {
             alt={`Cat image ${image.id}`}
             className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
+            onLoad={() => setIsLoaded(true)} // Set image as loaded
           />
         </div>
       </Link>

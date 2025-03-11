@@ -47,6 +47,12 @@ export default function ImagesView() {
 
   return (
     <div className="flex flex-col gap-8">
+      <div className="text-center">
+        <h2 className="text-xl font-bold">Random Images</h2>
+        <p className="text-gray-600">
+          Explore the magical world of internet feline images!
+        </p>
+      </div>
       <RefreshButton
         content="New cats"
         refetch={refetch}

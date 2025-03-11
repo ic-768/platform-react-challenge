@@ -43,7 +43,7 @@ export default function BreedModal({ breedId }: BreedModalProps) {
   }
 
   return (
-    <Modal onClose={onClose}>
+    <Modal title={breedId} onClose={onClose}>
       <Gallery>
         {breedImages.map((image, index) => (
           <GalleryItem

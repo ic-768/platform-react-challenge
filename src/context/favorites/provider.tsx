@@ -7,4 +7,5 @@ export const FavoritesContext = createContext<FavoritesContextType>({
   addToFavorites: () => {},
   removeFromFavorites: () => {},
   isFavorite: () => false,
+  hasFavorites: false,
 });

@@ -7,13 +7,7 @@ type Message = {
   id: string;
 };
 
-const messages = [
-  "Meow!",
-  "Very nice scritches!",
-  "More please!",
-  "😻",
-  "Purrrr!",
-];
+const messages = ["Meow!", "Scritches!", "😻", "Purr!"];
 
 export const usePettingTrainer = () => {
   const [petMessages, setPetMessages] = useState<Message[]>([]);

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 import { usePettingTrainer } from "@/hooks/usePettingTrainer";
+import { fadeIn } from "@/lib/animations";
 
 export default function PettingTrainer() {
   const {
@@ -15,7 +16,13 @@ export default function PettingTrainer() {
   } = usePettingTrainer();
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <motion.div
+      variants={fadeIn}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="flex flex-col items-center gap-4"
+    >
       <div className="text-center">
         <h2 className="text-xl font-bold">Pet the Cat</h2>
         <p className="text-gray-600">
@@ -66,6 +73,6 @@ export default function PettingTrainer() {
       <div className="mt-4 text-center">
         <p className="text-sm text-gray-500">Pet count: {petCount}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }

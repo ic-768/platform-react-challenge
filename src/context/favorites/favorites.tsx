@@ -10,6 +10,7 @@ export interface FavoritesContextType {
   addToFavorites: (image: Image) => void;
   removeFromFavorites: (image: Image) => void;
   isFavorite: (image: Image) => boolean;
+  hasFavorites: boolean;
 }
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
@@ -60,6 +61,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
         addToFavorites,
         removeFromFavorites,
         isFavorite,
+        hasFavorites: !!favorites.length,
       }}
     >
       {children}

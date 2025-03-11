@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 
 export default function Gallery({ children }: { children: ReactNode }) {
   return (

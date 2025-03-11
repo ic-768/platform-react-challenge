@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
 import { Loader2, PawPrint } from "lucide-react";
+import { motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 
 import {
   Card,

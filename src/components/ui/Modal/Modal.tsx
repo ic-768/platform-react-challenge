@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { motion } from "framer-motion";
 import { X } from "lucide-react";
+import { motion } from "motion/react";
 import { twJoin } from "tailwind-merge";
 
 import { dropInVariant } from "@/lib/animations";

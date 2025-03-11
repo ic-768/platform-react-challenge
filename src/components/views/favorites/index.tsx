@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 
 import ImageModal from "@/components/image-modal";
 import Gallery from "@/components/ui/gallery/gallery";

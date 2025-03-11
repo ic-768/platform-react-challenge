@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 import Badge from "@/components/ui/badge";
 import { Breed } from "@/types/Breed";

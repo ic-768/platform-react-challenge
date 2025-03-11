@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { AnimatePresence } from "framer-motion";
 import { Loader2 } from "lucide-react";
+import { AnimatePresence } from "motion/react";
 
 import { getImages } from "@/api/get-images";
 import ImageModal from "@/components/image-modal";

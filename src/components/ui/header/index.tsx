@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { Cat, Gift, Grid, PawPrint } from "lucide-react";
+import { motion } from "motion/react";
 
 import FavoritesIndicator from "./favorites-indicator";
 import HamburgerMenu from "./hamburger-menu";

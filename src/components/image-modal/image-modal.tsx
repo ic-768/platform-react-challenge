@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
+import { motion } from "motion/react";
 
 import { getImage } from "@/api/get-image";
 import FavoriteButton from "@/components/ui/favorite-button";

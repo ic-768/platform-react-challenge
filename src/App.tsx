@@ -7,6 +7,7 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Layout from "./components/layout";
+import NotFound from "./components/views/not-found";
 import { FavoritesProvider } from "./context/favorites/favorites";
 
 const BreedsView = lazy(() => import("./components/views/breeds"));
@@ -21,7 +22,7 @@ function App() {
     {
       path: "/",
       element: <Layout />,
-      errorElement: <div>Error element goes here</div>,
+      errorElement: <NotFound />,
       children: [
         {
           path: "/images/:imageId?",

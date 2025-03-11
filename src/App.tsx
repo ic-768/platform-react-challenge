@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -6,16 +7,16 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Layout from "./components/layout";
-import BreedsView from "./components/views/breeds";
-import FavoritesView from "./components/views/favorites";
-import ImagesView from "./components/views/images";
-import PettingTrainer from "./components/views/petting-trainer";
 import { FavoritesProvider } from "./context/favorites/favorites";
+
+const BreedsView = lazy(() => import("./components/views/breeds"));
+const FavoritesView = lazy(() => import("./components/views/favorites"));
+const ImagesView = lazy(() => import("./components/views/images"));
+const PettingTrainer = lazy(() => import("./components/views/petting-trainer"));
 
 function App() {
   const queryClient = new QueryClient();
 
-  // Router configuration
   const router = createBrowserRouter([
     {
       path: "/",
@@ -30,7 +31,10 @@ function App() {
           path: "/breeds/:breedId?",
           element: <BreedsView />,
         },
-        { path: "/favorites/:imageId?", element: <FavoritesView /> },
+        {
+          path: "/favorites/:imageId?",
+          element: <FavoritesView />,
+        },
         {
           path: "petting-trainer",
           element: <PettingTrainer />,

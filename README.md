@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# Cat Lover
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## A fun coding assignment
 
-Currently, two official plugins are available:
+### Routes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Images
 
-## Expanding the ESLint configuration
+- `/images`: Browse a gallery of random cat images
+- `/images/:imageId`: Opens a detailed modal view of a specific cat image - allowing you to favorite or unfavorite
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+#### Breeds
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- `/breeds`: View a list of searchable cat breeds
+- `/breeds/:breedId`: Opens a modal with detailed information about a specific cat breed
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### Favorites Routes
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `/favorites`: View your collection of favorite cat images
+- `/favorites/:imageId`: Opens a modal with a detailed view of a specific favorite cat image - can unfavorite
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+#### ???
+
+- `/petting-trainer`: Bonus interactive feature :)
+
+### Tech Stack:
+
+- React 19
+- Tailwind
+- Shadcn
+- Framer motion for smooth animations
+
+### Getting Started:
+
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Start the development server with `npm dev`
+4. Open in your browser
+
+### API Integration:
+
+This application uses [The Cat API](https://thecatapi.com/) for image and breed data.

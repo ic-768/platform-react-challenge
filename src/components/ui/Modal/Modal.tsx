@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { motion } from "motion/react";
@@ -26,14 +26,6 @@ const Modal = ({
     "relative max-h-[80vh] max-w-4/5 flex flex-col overflow-y-auto rounded-xl bg-white pt-0 text-black shadow-xl min-h-96 min-w-3/5 items-center",
     className,
   );
-
-  // Prevent body scrolling when modal is open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
 
   return createPortal(
     <BackDrop onMouseDown={onClose}>

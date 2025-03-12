@@ -141,6 +141,10 @@
   }
 }
 
+html {
+  @apply overflow-hidden;
+}
+
 h1 {
   @apply text-4xl text-black;
 }

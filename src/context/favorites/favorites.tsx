@@ -34,7 +34,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   }, [favorites]);
 
   const addToFavorites = (image: Image) => {
-    if (!favorites || favorites.find((s) => s.id === image.id)) {
+    if (favorites.find((s) => s.id === image.id)) {
       return; // Item already in favorites
     }
     queryClient.invalidateQueries({ queryKey: ["favorites"] });

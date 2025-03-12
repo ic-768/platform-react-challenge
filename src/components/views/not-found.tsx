@@ -4,15 +4,13 @@ import { Button } from "../ui/button";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[70vh] flex-col items-center justify-center px-4 py-6 text-center">
-      <h1 className="mb-2 text-4xl font-bold text-gray-800">
-        404: Cat Route not found
-      </h1>
-      <p className="mb-6 text-xl text-gray-600">
+    <main className="mt-36 flex flex-col items-center gap-4 text-center">
+      <h1 className="font-bold text-gray-800">404: Cat Route not found</h1>
+      <h4 className="text-gray-600">
         Oops! This page has gone missing like a cat at bath time.
-      </p>
+      </h4>
 
-      <div className="mb-8 max-w-md rounded-lg border border-blue-100 bg-blue-50 p-4">
+      <div className="max-w-md rounded-lg border border-blue-100 bg-blue-50 p-4">
         <p className="text-gray-700">
           The URL you&apos;re looking for might be incorrect. If not, then this
           is quite embarassing

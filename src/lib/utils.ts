@@ -30,5 +30,15 @@ export function extractBreedDetails(breed: Breed) {
     { name: "Wikipedia", url: breed.wikipedia_url },
   ].filter((link) => link.url);
 
-  return { characteristics, externalLinks };
+  const miscDetails = [
+    { name: "Indoor", value: breed.indoor },
+    { name: "Lap Cat", value: breed.lap },
+    { name: "Hypoallergenic", value: breed.hypoallergenic },
+    { name: "Rare", value: breed.rare },
+    { name: "Natural Breed", value: breed.natural },
+    { name: "Hairless", value: breed.hairless },
+    { name: "Short Legs", value: breed.short_legs },
+  ].filter((d) => d.value >= 1);
+
+  return { characteristics, externalLinks, miscDetails };
 }

@@ -6,7 +6,8 @@ import { extractBreedDetails } from "@/lib/utils";
 import { Breed } from "@/types/Breed";
 
 export default function Details({ breed }: { breed: Breed }) {
-  const { characteristics, externalLinks } = extractBreedDetails(breed);
+  const { characteristics, externalLinks, miscDetails } =
+    extractBreedDetails(breed);
 
   return (
     <div className="flex flex-col gap-6">
@@ -56,13 +57,9 @@ export default function Details({ breed }: { breed: Breed }) {
       )}
 
       <div className="flex flex-wrap gap-2">
-        {breed.indoor >= 1 && <Badge>Indoor</Badge>}
-        {breed.lap >= 1 && <Badge>Lap Cat</Badge>}
-        {breed.hypoallergenic >= 1 && <Badge> Hypoallergenic </Badge>}
-        {breed.rare >= 1 && <Badge>Rare</Badge>}
-        {breed.natural >= 1 && <Badge>Natural Breed</Badge>}
-        {breed.hairless >= 1 && <Badge>Hairless</Badge>}
-        {breed.short_legs >= 1 && <Badge>Short Legs</Badge>}
+        {miscDetails.map((d) => (
+          <Badge key={d.name}>{d.name}</Badge>
+        ))}
       </div>
     </div>
   );

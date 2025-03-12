@@ -34,13 +34,13 @@ export default function FavoritesView() {
               index={index}
             />
           ))}
-          <AnimatePresence>
-            {imageId && <ImageModal onClose={onClose} imageId={imageId} />}
-          </AnimatePresence>
         </Gallery>
       ) : (
         <NoFavorites />
       )}
+      <AnimatePresence>
+        {imageId && <ImageModal onClose={onClose} imageId={imageId} />}
+      </AnimatePresence>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Loader2, PawPrint } from "lucide-react";
 import { motion } from "motion/react";
 import { AnimatePresence } from "motion/react";
 
+import BreedModal from "@/components/Modal/breed-modal";
 import {
   Card,
   CardContent,
@@ -16,7 +17,6 @@ import { fadeIn } from "@/lib/animations";
 
 import BreedFilter from "./breed-filter";
 import BreedList from "./breed-list";
-import BreedModal from "./breed-modal";
 
 export default function BreedsView() {
   const { breedId } = useParams();

@@ -5,7 +5,8 @@ import { Loader2 } from "lucide-react";
 import { getBreedImages } from "@/api/get-breed-images";
 import Gallery from "@/components/ui/gallery/gallery";
 import GalleryItem from "@/components/ui/gallery/gallery-item";
-import Modal from "@/components/ui/Modal";
+
+import Modal from ".";
 
 interface BreedModalProps {
   breedId: string;

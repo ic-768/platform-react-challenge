@@ -4,9 +4,9 @@ import { Loader2 } from "lucide-react";
 import { AnimatePresence } from "motion/react";
 
 import { getImages } from "@/api/get-images";
-import ImageModal from "@/components/image-modal";
 import RefreshButton from "@/components/ui/refresh-button";
 
+import ImageModal from "../Modal/image-modal";
 import ErrorBanner from "../ui/error-banner";
 import Gallery from "../ui/gallery/gallery";
 import GalleryItem from "../ui/gallery/gallery-item";

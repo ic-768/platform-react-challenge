@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
 
-import ImageModal from "@/components/image-modal";
+import ImageModal from "@/components/Modal/image-modal";
 import Gallery from "@/components/ui/gallery/gallery";
 import GalleryItem from "@/components/ui/gallery/gallery-item";
 import { useFavorites } from "@/context/favorites/use-favorites";

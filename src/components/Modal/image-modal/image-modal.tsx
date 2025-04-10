@@ -4,9 +4,9 @@ import { motion } from "motion/react";
 
 import { getImage } from "@/api/get-image";
 import FavoriteButton from "@/components/ui/favorite-button";
-import Modal from "@/components/ui/Modal";
 import { useFavorites } from "@/context/favorites/use-favorites";
 
+import Modal from "..";
 import HasBreedContent from "./has-breed-content";
 import NoBreedContent from "./no-breed-content";
 
